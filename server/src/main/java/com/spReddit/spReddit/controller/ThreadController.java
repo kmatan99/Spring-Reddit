@@ -7,6 +7,7 @@ import com.spReddit.spReddit.model.ThreadEntity;
 import com.spReddit.spReddit.model.UserEntity;
 import com.spReddit.spReddit.repository.ThreadRepository;
 import com.spReddit.spReddit.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,19 @@ public class ThreadController {
         List<ThreadDto> threadDtoList = threadList.stream().map(ThreadDto::new).collect(Collectors.toList());
 
         return new ThreadListDto(threadDtoList);
+    }
+
+    @GetMapping(value = "/getthread/{id}")
+    public ThreadDto getSingleThread(@PathVariable Long id) throws Exception {
+
+        ThreadEntity threadEntity = threadRepository.findById(id)
+                .orElseThrow(() -> new Exception("Thread not found!"));
+
+         ModelMapper modelMapper = new ModelMapper();
+
+         ThreadDto thread = modelMapper.map(threadEntity, ThreadDto.class);
+
+         return thread;
     }
 
     @PostMapping(value = "/createthread/{id}")

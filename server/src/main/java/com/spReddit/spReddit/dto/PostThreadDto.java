@@ -14,6 +14,5 @@ public class PostThreadDto implements Serializable {
     @NotBlank(message = "Content is required")
     private String content;
 
-    @NotBlank(message = "Image url is required")
     private String imageUrl;
 }
