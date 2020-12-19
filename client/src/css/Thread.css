@@ -1,0 +1,86 @@
+.threadContainer {
+    margin-bottom: 35px;
+    padding: 10px;
+    background-color: rgb(34, 34, 34);
+    box-shadow: 0px 5px 20px 0px;
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    height: 150px;
+    justify-content: space-between;
+}
+
+.buttons {
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.upvote {
+    font-size: xx-large;
+    background-color: rgb(34, 34, 34);
+    border: none;
+    color: rgb(201, 74, 0);
+    height: 30px;
+    margin-bottom: 3px;
+}
+
+.downvote {
+    font-size: xx-large;
+    background-color: rgb(34, 34, 34);
+    border: none;
+    color: rgb(73, 121, 175);
+    height: 30px;
+}
+
+.upvote:hover {
+    opacity: 0.8;
+}
+
+.downvote:hover {
+    opacity: 0.8;
+}
+
+.textContainer {
+    overflow: hidden;
+    width: 75%;
+}
+
+.textContainer:hover {
+    opacity: 0.6;
+}
+
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title {
+    color: white;
+    font-size: 17px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.titleBorder {
+    width: 100%;
+    border-color: gray;
+}
+
+.content {
+    color: white;
+    font-size: 14px;
+}
+
+.image {
+    display: flex;
+    justify-content: flex-end;
+    width: 15%;
+}
+
+img {
+    border-radius: 20px;
+    width: 100%;
+    height: 50%;
+}
