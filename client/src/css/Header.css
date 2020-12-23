@@ -2,7 +2,6 @@
     width: 100%;
     height: 60px;
     background-color: rgb(34, 34, 34);
-    margin-bottom: 30px;
     display: flex;
     flex-direction: row;
 }
@@ -14,5 +13,7 @@
 }
 
 .appName {
-    color: white
+    color: white;
+    font-size: larger;
+    margin: auto 0px auto 0px;
 }
