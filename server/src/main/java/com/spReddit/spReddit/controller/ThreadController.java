@@ -8,6 +8,7 @@ import com.spReddit.spReddit.model.UserEntity;
 import com.spReddit.spReddit.repository.ThreadRepository;
 import com.spReddit.spReddit.repository.UserRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +28,7 @@ public class ThreadController {
 
     @GetMapping(value = "/getthreads")
     public ThreadListDto getAllThreads() {
-        List<ThreadEntity> threadList = threadRepository.findAll();
+        List<ThreadEntity> threadList = threadRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 
         List<ThreadDto> threadDtoList = threadList.stream().map(ThreadDto::new).collect(Collectors.toList());
 
@@ -80,5 +81,27 @@ public class ThreadController {
 
         threadRepository.save(threadEntity);
         return ResponseEntity.ok("Thread updated!");
+    }
+
+    @GetMapping(value = "/likethread/{id}")
+    ResponseEntity<String> likeThread(@PathVariable Long id) throws Exception {
+
+        ThreadEntity thread = threadRepository.findById(id).orElseThrow(() -> new Exception("Thread not found!"));
+
+        thread.increaseLikes();
+        threadRepository.save(thread);
+
+        return ResponseEntity.ok("Liked thread");
+    }
+
+    @GetMapping(value = "/dislikethread/{id}")
+    ResponseEntity<String> dislikeThread(@PathVariable Long id) throws Exception {
+
+        ThreadEntity thread = threadRepository.findById(id).orElseThrow(() -> new Exception("Thread not found!"));
+
+        thread.decreaseLikes();
+        threadRepository.save(thread);
+
+        return ResponseEntity.ok("Disliked thread");
     }
 }

@@ -12,13 +12,17 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ThreadDto implements Serializable {
 
+    private Long id;
     private String title;
     private String content;
     private String imageUrl;
+    private int likecount;
 
     public ThreadDto(ThreadEntity threadEntity) {
+        this.id = threadEntity.getId();
         this.title = threadEntity.getTitle();
         this.content = threadEntity.getContent();
         this.imageUrl = threadEntity.getImageUrl();
+        this.likecount = threadEntity.getLikecount();
     }
 }
