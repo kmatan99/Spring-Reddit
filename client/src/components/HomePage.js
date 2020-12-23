@@ -31,7 +31,7 @@ class HomePage extends React.Component {
         .then((response) => {
             this.setState({
                 allThreads: response.data.threadList
-            }, () => console.log(this.state.allThreads))
+            })
         })
     }
 }
