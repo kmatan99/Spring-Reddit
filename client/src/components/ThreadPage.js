@@ -21,7 +21,9 @@ class ThreadPage extends React.Component {
             this.props.allThreads.map((thread, index) => {
                 return(
                     <Thread 
+                        key={index}
                         thread={thread}
+                        getThreads={this.props.getThreads}
                     />
                 )
             })

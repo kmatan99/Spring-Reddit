@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import ThreadPage from './ThreadPage';
+import UserProfile from './UserProfile';
 import '../css/HomePage.css';
 
 class HomePage extends React.Component {
@@ -11,9 +12,13 @@ class HomePage extends React.Component {
 
     render() {
         return(
-            <ThreadPage 
+            <div className="homepage">
+                <UserProfile />
+                <ThreadPage 
                 allThreads={this.state.allThreads}
+                getThreads={this.getThreads}
             />
+            </div>   
         )
     }
 
@@ -26,7 +31,7 @@ class HomePage extends React.Component {
         .then((response) => {
             this.setState({
                 allThreads: response.data.threadList
-            })
+            }, () => console.log(this.state.allThreads))
         })
     }
 }
