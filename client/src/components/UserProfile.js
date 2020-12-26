@@ -1,11 +1,12 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 import '../css/UserProfile.css';
 
 class UserProfile extends React.Component {
 
     state = {
-        isLoggedIn: false
+        isLoggedIn: true
     }
     
     render() {
@@ -13,7 +14,11 @@ class UserProfile extends React.Component {
             <div className="userOptions">
                 {
                     this.state.isLoggedIn ? (
-                        <div>Username</div>
+                        <div className="registeredUser">
+                            <div className="username">username</div>
+                            <div className="editUser">Edit profile</div>
+                            <button className="logOut">Log out</button>
+                        </div>
                     ) 
                     : ( 
                         <div className="guestUser">
@@ -34,4 +39,4 @@ class UserProfile extends React.Component {
 }
 
 
-export default UserProfile;
+export default withRouter(UserProfile);

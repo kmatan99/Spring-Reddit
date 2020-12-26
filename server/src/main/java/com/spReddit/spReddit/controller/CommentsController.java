@@ -29,7 +29,7 @@ public class CommentsController {
     @PostMapping(value = "/comment/{thread_id}")
     ResponseEntity<String> addComment(@PathVariable Long thread_id, @RequestBody CommentDto commentDto) throws Exception {
 
-        UserEntity user = userRepository.findById(Long.valueOf(2))
+        UserEntity user = userRepository.findById(Long.valueOf(2)) //will be solver later using Principle interface
                 .orElseThrow(() -> new Exception("User not found!"));
 
         ThreadEntity thread = threadRepository.findById(thread_id)

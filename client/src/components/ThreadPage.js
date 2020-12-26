@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 
 import Thread from './Thread';
 import '../css/ThreadPage.css';
@@ -31,4 +32,4 @@ class ThreadPage extends React.Component {
     }
 }
 
-export default ThreadPage;
+export default withRouter(ThreadPage);

@@ -22,7 +22,7 @@ public class UserController {
         userRepository.saveAndFlush(modelMapper.map(userDto, UserEntity.class));
         return ResponseEntity.ok("User created sucessfully!");
     }
-
+    
     @DeleteMapping(value = "/deleteuser/{id}")
     ResponseEntity<String> deleteUser(@PathVariable long id){
         userRepository.deleteById(id);
