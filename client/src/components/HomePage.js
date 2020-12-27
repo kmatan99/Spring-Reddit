@@ -10,11 +10,12 @@ import {
 import ThreadPage from './ThreadPage';
 import UserProfile from './UserProfile';
 import NewThreadButton from './NewThreadButton';
+import ThreadCreate from './ThreadCreate';
 import '../css/HomePage.css';
 
 class HomePage extends React.Component {
     state = {
-        allThreads: []
+        allThreads: [],
     }
 
     render() {
@@ -22,7 +23,9 @@ class HomePage extends React.Component {
             <Router>
                 <Switch>
                     <Route path="/createThread">
-                        <div>on create thread route</div>
+                        <ThreadCreate 
+                            getThreads={this.getThreads}
+                        />
                     </Route>
 
                     <Route path="/">

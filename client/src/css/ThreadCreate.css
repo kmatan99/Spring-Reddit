@@ -1,0 +1,38 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(34, 34, 34);
+    width: 50%;
+    height: 80vh;
+    margin: 30px auto auto auto;
+    border-radius: 15px;
+}
+
+.title {
+    background-color: rgb(63, 63, 63);
+    margin: 20px auto 10px auto;
+    padding: 7px;
+    width: 90%;
+    height: 10%;
+    border: none;
+    border-radius: 15px;
+}
+
+.content {
+    background-color: rgb(63, 63, 63);
+    margin: 10px auto 10px auto;
+    padding: 7px;
+    width: 90%;
+    height: 30%;
+    border: none;
+    border-radius: 15px;
+}
+
+.imageUrl { 
+    background-color: rgb(63, 63, 63);
+    margin: 10px auto 10px auto;
+    padding: 7px;
+    width: 90%;
+    border: none;
+    border-radius: 15px;
+}

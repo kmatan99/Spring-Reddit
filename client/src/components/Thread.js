@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import {withRouter} from 'react-router-dom';
+
 import '../css/Thread.css';
 
 class Thread extends React.Component {
@@ -19,14 +21,22 @@ class Thread extends React.Component {
                     <p className="likecount">{this.props.thread.likecount}</p>
                 </div>
                 <div className="textContainer">
-                    <p className="title">{this.props.thread.title}</p>
+                    <p className="threadTitle">{this.props.thread.title}</p>
                     <hr className="titleBorder"></hr>
-                    <p className="content">{this.props.thread.content}</p>
+                    <p className="threadContent">{this.props.thread.content}</p>
                 </div>
                 <div className="image">
-                    <img src=
-                        "https://image.shutterstock.com/image-vector/sample-stamp-grunge-texture-vector-260nw-1389188327.jpg" alt="">
-                    </img>
+                    {this.props.thread.imageUrl ? (
+                            <img src={this.props.thread.imageUrl} 
+                                alt="">
+                            </img>
+                        ) :     
+                        (
+                            <img src="https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg" 
+                                alt="">
+                            </img>
+                        )
+                    }       
                 </div>
             </div>
         )
@@ -70,4 +80,4 @@ class Thread extends React.Component {
     }
 }
 
-export default Thread;
+export default withRouter(Thread);

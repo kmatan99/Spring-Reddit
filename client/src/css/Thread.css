@@ -60,7 +60,7 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.title {
+.threadTitle {
     color: white;
     font-size: 17px;
     width: 100%;
@@ -73,7 +73,7 @@ p {
     border-color: gray;
 }
 
-.content {
+.threadContent {
     color: white;
     font-size: 14px;
 }
