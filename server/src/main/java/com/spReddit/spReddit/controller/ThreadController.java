@@ -104,4 +104,17 @@ public class ThreadController {
 
         return ResponseEntity.ok("Disliked thread");
     }
+
+    @GetMapping(value = "/userthreads/{userid}")
+    public ThreadListDto getUserThreads(@PathVariable Long userid) throws Exception {
+
+        UserEntity user = userRepository.findById(userid)
+                .orElseThrow(() -> new Exception("User not found!"));
+
+        List<ThreadEntity> threads = user.getPostList();
+        List<ThreadDto> threadsDto = threads.stream().map(ThreadDto::new).collect(Collectors.toList());
+
+        return new ThreadListDto(threadsDto);
+    }
+
 }

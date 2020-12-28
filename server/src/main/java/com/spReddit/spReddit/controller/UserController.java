@@ -17,7 +17,7 @@ public class UserController {
     }
 
     @GetMapping(value = "/getuser/{id}")
-    UserDto getUser(@PathVariable Long id) throws Exception {
+    public UserDto getUser(@PathVariable Long id) throws Exception {
 
         UserEntity userEntity= userRepository.findById(id)
                 .orElseThrow(() -> new Exception("User not found!"));
