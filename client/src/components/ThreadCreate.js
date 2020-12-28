@@ -51,10 +51,10 @@ class ThreadCreate extends React.Component {
         axios.post("http://localhost:9090/createthread/3", threadData)
         .then(() => {
             console.log("Created thread!");
+            this.props.getThreads();
         })
 
         this.props.history.push("/");
-        this.props.getThreads();
     }
 }
 

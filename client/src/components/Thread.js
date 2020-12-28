@@ -9,7 +9,8 @@ class Thread extends React.Component {
 
     state = {
         clickedLike: false,
-        clickedDislike: false
+        clickedDislike: false,
+        user: ""
     }
 
     render() {
@@ -21,6 +22,7 @@ class Thread extends React.Component {
                     <p className="likecount">{this.props.thread.likecount}</p>
                 </div>
                 <div className="textContainer">
+                    <p className="createdBy">Created by: {this.state.user}</p>
                     <p className="threadTitle">{this.props.thread.title}</p>
                     <hr className="titleBorder"></hr>
                     <p className="threadContent">{this.props.thread.content}</p>
@@ -40,6 +42,15 @@ class Thread extends React.Component {
                 </div>
             </div>
         )
+    }
+
+    componentDidMount = () => {
+        axios.get("http://localhost:9090/getuser/" + this.props.thread.userid)
+        .then(response => {
+            this.setState({
+                user: response.data.username    
+            })
+        })
     }
 
     likeThread = () => {

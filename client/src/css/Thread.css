@@ -52,20 +52,26 @@
     width: 75%;
 }
 
-.textContainer:hover {
-    opacity: 0.6;
-}
-
 p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.createdBy {
+    margin: 3px auto 0px 0px;
+    color: rgb(150, 148, 148);
+    font-size: 10px;
 }
 
 .threadTitle {
     color: white;
     font-size: 17px;
     width: 100%;
-    margin-top: 5px;
     margin-bottom: 2px;
+    margin-top: 8px;
+}
+
+.threadTitle:hover {
+    opacity: 0.8;
 }
 
 .titleBorder {
@@ -76,6 +82,10 @@ p {
 .threadContent {
     color: white;
     font-size: 14px;
+}
+
+.threadContent:hover {
+    opacity: 0.8;
 }
 
 .image {
