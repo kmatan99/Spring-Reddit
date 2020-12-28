@@ -1,6 +1,7 @@
 package com.spReddit.spReddit.controller;
 
 import com.spReddit.spReddit.dto.PostUserDto;
+import com.spReddit.spReddit.dto.UserDto;
 import com.spReddit.spReddit.model.UserEntity;
 import com.spReddit.spReddit.repository.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -13,6 +14,17 @@ public class UserController {
 
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
+    }
+
+    @GetMapping(value = "/getuser/{id}")
+    UserDto getUser(@PathVariable Long id) throws Exception {
+
+        UserEntity userEntity= userRepository.findById(id)
+                .orElseThrow(() -> new Exception("User not found!"));
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        return modelMapper.map(userEntity, UserDto.class);
     }
 
     @PostMapping(value = "/createuser")

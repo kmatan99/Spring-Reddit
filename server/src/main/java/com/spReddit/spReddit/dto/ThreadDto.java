@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class ThreadDto implements Serializable {
 
     private Long id;
+    private Long userid;
     private String title;
     private String content;
     private String imageUrl;
@@ -20,6 +21,7 @@ public class ThreadDto implements Serializable {
 
     public ThreadDto(ThreadEntity threadEntity) {
         this.id = threadEntity.getId();
+        this.userid = threadEntity.getUser().getId();
         this.title = threadEntity.getTitle();
         this.content = threadEntity.getContent();
         this.imageUrl = threadEntity.getImageUrl();
