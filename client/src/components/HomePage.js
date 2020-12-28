@@ -11,6 +11,7 @@ import ThreadPage from './ThreadPage';
 import UserProfile from './UserProfile';
 import NewThreadButton from './NewThreadButton';
 import ThreadCreate from './ThreadCreate';
+import UserPosts from './UserPosts';
 import '../css/HomePage.css';
 
 class HomePage extends React.Component {
@@ -26,6 +27,10 @@ class HomePage extends React.Component {
                         <ThreadCreate 
                             getThreads={this.getThreads}
                         />
+                    </Route>
+
+                    <Route path="/userPosts">
+                        <UserPosts />
                     </Route>
 
                     <Route path="/">

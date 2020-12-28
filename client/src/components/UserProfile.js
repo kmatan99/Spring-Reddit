@@ -15,7 +15,7 @@ class UserProfile extends React.Component {
                 {
                     this.state.isLoggedIn ? (
                         <div className="registeredUser">
-                            <div className="username">username</div>
+                            <div className="username" onClick={this.toUserPosts}>username</div>
                             <div className="editUser">Edit profile</div>
                             <button className="logOut">Log out</button>
                         </div>
@@ -35,6 +35,10 @@ class UserProfile extends React.Component {
                 }
             </div>
         )
+    }
+
+    toUserPosts = () => {
+        this.props.history.push("/userPosts");
     }
 }
 
