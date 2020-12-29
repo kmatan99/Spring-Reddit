@@ -4,6 +4,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 import Thread from './Thread';
+import '../css/UserPosts.css';
 
 class UserPosts extends React.Component {
     state = {
@@ -12,7 +13,10 @@ class UserPosts extends React.Component {
 
     render() {
         return(
-            <div>{this.renderPosts()}</div>
+            <div className="mainContainer">
+                <div className="threads">{this.renderPosts()}</div>
+                <button className="homeButton" onClick={this.toHome}>Home</button>
+            </div>
         )
     }
 
@@ -21,7 +25,7 @@ class UserPosts extends React.Component {
     }
 
     getPosts = () => {
-        axios.get("http://localhost:9090/userthreads/4")
+        axios.get("http://localhost:9090/userthreads/3")
         .then(response => {
             this.setState({
                 threads: response.data.threadList
@@ -40,10 +44,19 @@ class UserPosts extends React.Component {
                     <Thread 
                         key={index}
                         thread={thread}
+                        threadContainer="userThreads"
+                        editButton="editButton"
+                        deleteButton="deleteButton"
+                        getPosts={this.getPosts}
                     />
                 )
             })
         )
+    }
+
+    toHome = () => {
+        this.props.getThreads();
+        this.props.history.push("/");
     }
 }
 

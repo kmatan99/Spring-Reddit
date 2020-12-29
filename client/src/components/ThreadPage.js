@@ -25,6 +25,7 @@ class ThreadPage extends React.Component {
                         key={index}
                         thread={thread}
                         getThreads={this.props.getThreads}
+                        threadContainer="threadContainer"
                     />
                 )
             })

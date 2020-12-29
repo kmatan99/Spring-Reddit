@@ -1,0 +1,52 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.threads {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.homeButton {
+    height: 30px;
+    width: 10%;
+    margin: 60px auto auto 30px;
+    border: none;
+    border-radius: 15px;
+    background-color:rgb(73, 121, 175);
+    color: white
+}
+
+.userThreads {
+    margin: 30px auto;
+    padding: 10px;
+    background-color: rgb(34, 34, 34);  
+    box-shadow: 0px 5px 20px 0px;
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.editButton {
+    width: 40%;
+    height: 30%;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(94, 168, 91);
+    color: white;
+    margin: 10px 5px 10px auto;
+}
+
+.deleteButton {
+    width: 40%;
+    height: 30%;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(184, 20, 20);
+    color: white;
+    margin: 0px 5px 5px auto;
+}

@@ -30,7 +30,9 @@ class HomePage extends React.Component {
                     </Route>
 
                     <Route path="/userPosts">
-                        <UserPosts />
+                        <UserPosts 
+                            getThreads={this.getThreads}
+                        />
                     </Route>
 
                     <Route path="/">

@@ -15,7 +15,7 @@ class Thread extends React.Component {
 
     render() {
         return(
-            <div className="threadContainer">
+            <div className={this.props.threadContainer}>
                 <div className="buttons">
                     <button className="upvote" onClick={this.likeThread}>⇧</button>
                     <button className="downvote" onClick={this.dislikeThread}>⇩</button>
@@ -37,6 +37,16 @@ class Thread extends React.Component {
                             <img src="https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg" 
                                 alt="">
                             </img>
+                        )
+                    }
+
+                    {this.props.editButton ? (
+                        <div className="userButtons">
+                            <button className={this.props.editButton}>✎</button>
+                            <button className={this.props.deleteButton} onClick={this.deleteThread}>X</button>
+                        </div>
+                        ) : (
+                            null
                         )
                     }       
                 </div>
@@ -87,6 +97,13 @@ class Thread extends React.Component {
         this.setState({
             clickedLike: false,
             clickedDislike: true
+        })
+    }
+
+    deleteThread = () => {
+        axios.delete("http://localhost:9090/deletethread/" + this.props.thread.id)
+        .then(() => {
+            this.props.getPosts();
         })
     }
 }
