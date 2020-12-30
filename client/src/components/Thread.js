@@ -22,7 +22,7 @@ class Thread extends React.Component {
                     <p className="likecount">{this.props.thread.likecount}</p>
                 </div>
                 <div className="textContainer">
-                    <p className="createdBy">Created by: {this.state.user}</p>
+                    <p className="createdBy">Posted by: {this.state.user}</p>
                     <p className="threadTitle">{this.props.thread.title}</p>
                     <hr className="titleBorder"></hr>
                     <p className="threadContent">{this.props.thread.content}</p>
@@ -72,14 +72,17 @@ class Thread extends React.Component {
             })
         }
 
-        else {
-            console.log("already liked")
+        if(this.state.clickedDislike) {
+            this.setState({
+                clickedDislike: false
+            })
         }
-
-        this.setState({
-            clickedLike: true,
-            clickedDislike: false
-        })
+        else {
+            this.setState({
+                clickedLike: true,
+                clickedDislike: false
+            })
+        }
     }
 
     dislikeThread = () => {
@@ -90,14 +93,18 @@ class Thread extends React.Component {
                 this.props.getThreads();
             })
         }
-        else {
-            console.log("already disliked");
-        }
 
-        this.setState({
-            clickedLike: false,
-            clickedDislike: true
-        })
+        if(this.state.clickedLike) {
+            this.setState({
+                clickedLike: false
+            })
+        }
+        else {
+            this.setState({
+                clickedLike: false,
+                clickedDislike: true
+            })
+        }
     }
 
     deleteThread = () => {
