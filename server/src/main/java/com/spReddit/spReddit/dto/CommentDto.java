@@ -10,4 +10,6 @@ import java.io.Serializable;
 public class CommentDto implements Serializable {
 
     private String content;
+    private int likecount;
+    private Long threadid;
 }
