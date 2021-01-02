@@ -1,0 +1,26 @@
+.fullthread {
+    background-color: rgb(34, 34, 34);
+    margin: 10px auto auto;
+    padding: 10px;
+    width: 70%;
+    height: 80vh;
+    border-radius: 15px;
+}
+
+.fullThreadTitle {
+    background-color: rgb(63, 63, 63);
+    color: white;
+    width: 70%;
+    border: none;
+    border-radius: 15px;
+    margin: 10px auto;
+}
+
+.fullThreadContent {
+    background-color: rgb(63, 63, 63);
+    color: white;
+    width: 70%;
+    border: none;
+    border-radius: 15px;
+    margin: 10px auto;   
+}

@@ -23,9 +23,9 @@ class ThreadPreview extends React.Component {
                 </div>
                 <div className="textContainer">
                     <p className="createdBy">Posted by: {this.state.user}</p>
-                    <p className="threadTitle">{this.props.thread.title}</p>
+                    <p className="threadTitle" onClick={this.getId}>{this.props.thread.title}</p>
                     <hr className="titleBorder"></hr>
-                    <p className="threadContent">{this.props.thread.content}</p>
+                    <p className="threadContent" onClick={this.getId}>{this.props.thread.content}</p>
                 </div>
                 <div className="image">
                     {this.props.thread.imageUrl ? (
@@ -112,6 +112,11 @@ class ThreadPreview extends React.Component {
         .then(() => {
             this.props.getPosts();
         })
+    }
+
+    getId = () => {
+        this.props.getThreadId(this.props.thread.id);
+        this.props.history.push("/thread");
     }
 }
 
