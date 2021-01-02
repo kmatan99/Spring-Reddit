@@ -16,7 +16,7 @@ class ThreadCreate extends React.Component {
         return(
             <div className="main">
                 <input type="text" placeholder="Enter title" className="title" onChange={this.getTitle}></input>
-                <input type="text" placeholder="What do you want to write about" className="content" onChange={this.getContent}></input>
+                <textarea placeholder="Write about something.." className="content" onChange={this.getContent}></textarea>
                 <input type="text" placeholder="Image URL" className="imageUrl" onChange={this.getImageUrl}></input>
                 <button className="create" onClick={this.createThread}>Create thread</button>
             </div>
