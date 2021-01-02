@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { withRouter } from 'react-router-dom';
 
-import Thread from './Thread';
+import ThreadPreview from './ThreadPreview';
 import '../css/UserPosts.css';
 
 class UserPosts extends React.Component {
@@ -41,7 +41,7 @@ class UserPosts extends React.Component {
         return (
             this.state.threads.map((thread, index) => {
                 return (
-                    <Thread 
+                    <ThreadPreview 
                         key={index}
                         thread={thread}
                         threadContainer="userThreads"

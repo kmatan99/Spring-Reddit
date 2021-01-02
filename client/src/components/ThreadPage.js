@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 
-import Thread from './Thread';
+import ThreadPreview from './ThreadPreview';
 import '../css/ThreadPage.css';
 
 class ThreadPage extends React.Component {
@@ -21,7 +21,7 @@ class ThreadPage extends React.Component {
         return(
             this.props.allThreads.map((thread, index) => {
                 return(
-                    <Thread 
+                    <ThreadPreview 
                         key={index}
                         thread={thread}
                         getThreads={this.props.getThreads}

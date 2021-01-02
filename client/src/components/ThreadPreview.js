@@ -3,9 +3,9 @@ import axios from 'axios';
 
 import {withRouter} from 'react-router-dom';
 
-import '../css/Thread.css';
+import '../css/ThreadPreview.css';
 
-class Thread extends React.Component {
+class ThreadPreview extends React.Component {
 
     state = {
         clickedLike: false,
@@ -115,4 +115,4 @@ class Thread extends React.Component {
     }
 }
 
-export default withRouter(Thread);
+export default withRouter(ThreadPreview);
