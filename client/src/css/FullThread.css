@@ -1,26 +1,88 @@
 .fullthread {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     background-color: rgb(34, 34, 34);
-    margin: 10px auto auto;
-    padding: 10px;
+    margin: 30px auto;
     width: 70%;
-    height: 80vh;
-    border-radius: 15px;
+    height: 100%;
 }
 
-.fullThreadTitle {
-    background-color: rgb(63, 63, 63);
-    color: white;
-    width: 70%;
+.buttonsF {
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px auto auto 10px;
+}
+
+.upvoteF {
+    font-size: xx-large;
+    background-color: rgb(34, 34, 34);
     border: none;
-    border-radius: 15px;
+    color: rgb(94, 168, 91);
+    height: 30px;
+    margin-bottom: 3px;
+}
+
+.downvoteF {
+    font-size: xx-large;
+    background-color: rgb(34, 34, 34);
+    border: none;
+    color: rgb(73, 121, 175);
+    height: 30px;
+}
+
+.upvoteF:hover {
+    opacity: 0.8;
+}
+
+.downvoteF:hover {
+    opacity: 0.8;
+}
+
+.likecountF {
+    color: white;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.textcontainerF {
+    overflow: hidden;
+    width: 75%;
     margin: 10px auto;
 }
 
-.fullThreadContent {
-    background-color: rgb(63, 63, 63);
+p {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.fullThreadTitle {
     color: white;
-    width: 70%;
-    border: none;
-    border-radius: 15px;
-    margin: 10px auto;   
+    font-size: x-large;
+}
+
+.fullThreadContent {
+    color: white;
+    font-size: large;
+}
+
+.commentsData {
+    margin-top: 30px;
+    color: rgb(156, 156, 156);
+    border-bottom: 2px solid rgb(156, 156, 156);
+}
+
+.imageF {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 30%;
+    margin: 10px auto;
+}
+
+img {
+    border-radius: 20px;
+    width: 100%;
+    height: 50%;
 }
