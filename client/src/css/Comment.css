@@ -1,0 +1,49 @@
+.commentContainer {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid rgb(156, 156, 156);;
+    border-radius: 15px;
+    margin: 10px auto 10px 0px;
+    height: 100px;
+}
+
+.comment {
+    color: white;
+}
+
+.buttonsC {
+    display: flex;
+    flex-direction: column;
+    width: 5%;
+}
+
+.upvoteC {
+    font-size: larger;
+    background-color: rgb(34, 34, 34);
+    border: none;
+    color: rgb(94, 168, 91);
+    padding: 0px;
+    margin: 5px auto 0px 5px;
+}
+
+.downvoteC {
+    font-size: larger;
+    background-color: rgb(34, 34, 34);
+    border: none;
+    color: rgb(73, 121, 175);
+    padding: 0px;
+    margin: 0px auto 0px 5px;
+}
+
+.upvoteC:hover {
+    opacity: 0.8;
+}
+
+.downvoteC:hover {
+    opacity: 0.8;
+}
+
+.likecountC {
+    color: white;
+    margin: 0px auto auto 5px;
+}
