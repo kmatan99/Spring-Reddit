@@ -10,37 +10,45 @@ class FullThread extends React.Component {
         thread: {},
         comments: [],
         clickedLike: false,
-        clickedDislike: false
+        clickedDislike: false,
+        commentContent: ""
     }
 
     render() {
         return(
-            <div className="fullthread">
-                <div className="buttonsF">
-                    <button className="upvoteF" onClick={this.likeThread}>⇧</button>
-                    <button className="downvoteF" onClick={this.dislikeThread}>⇩</button>
-                    <p className="likecountF">{this.state.thread.likecount}</p>
+            <div className="mainF">
+                <div className="fullthread">
+                    <div className="buttonsF">
+                        <button className="upvoteF" onClick={this.likeThread}>⇧</button>
+                        <button className="downvoteF" onClick={this.dislikeThread}>⇩</button>
+                        <p className="likecountF">{this.state.thread.likecount}</p>
+                    </div>
+                    <div className="textcontainerF">
+                        <div className="fullThreadTitle">{this.state.thread.title}</div>
+                        <hr></hr>
+                        <div className="fullThreadContent">{this.state.thread.content}</div>
+                        <div className="commentsData">Comments ({this.state.comments.length})</div>
+                        <div className="commentareaF">
+                            <textarea className="addcommentF" placeholder="Write something" onChange={this.getComment}></textarea>
+                            <button className="postcommentF" onClick={this.addComment}>Comment</button>
+                        </div>
+                        <div className="comments">{this.renderComments()}</div>
+                    </div>
+                    <div className="imageF">
+                        {this.state.thread.imageUrl ? (
+                                <img src={this.state.thread.imageUrl} 
+                                    alt="">
+                                </img>
+                            ) :     
+                            (
+                                <img src="https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg" 
+                                    alt="">
+                                </img>
+                            )
+                        }
+                    </div>
                 </div>
-                <div className="textcontainerF">
-                    <div className="fullThreadTitle">{this.state.thread.title}</div>
-                    <hr></hr>
-                    <div className="fullThreadContent">{this.state.thread.content}</div>
-                    <div className="commentsData">Comments ({this.state.comments.length})</div>
-                    <div className="comments">{this.renderComments()}</div>
-                </div>
-                <div className="imageF">
-                    {this.state.thread.imageUrl ? (
-                            <img src={this.state.thread.imageUrl} 
-                                alt="">
-                            </img>
-                        ) :     
-                        (
-                            <img src="https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg" 
-                                alt="">
-                            </img>
-                        )
-                    }
-                </div>
+                <button className="tohomeF" onClick={this.toFrontPage}>Go to front page!</button>
             </div>
         )
     }
@@ -79,6 +87,7 @@ class FullThread extends React.Component {
                     <Comment 
                         key={index}
                         comment={comment}
+                        getThreadComments={this.getThreadComments}
                     />
                 )
             })
@@ -126,6 +135,32 @@ class FullThread extends React.Component {
                 clickedDislike: true
             })
         }
+    }
+
+    toFrontPage = () => {
+        this.props.history.push("/")
+    }
+
+    getComment = (e) => {
+        this.setState({
+            commentContent: e.target.value
+        })
+    }
+
+    addComment = () => {
+
+        const data = {
+            content: this.state.commentContent
+        }
+
+        if(this.state.commentContent === "") {
+            return null
+        }
+
+        axios.post("http://localhost:9090/comment/" + this.props.threadId, data)
+        .then(() => {
+            this.getThreadComments();
+        })
     }
 }
 
