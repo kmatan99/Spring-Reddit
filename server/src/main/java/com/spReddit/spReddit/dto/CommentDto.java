@@ -9,7 +9,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class CommentDto implements Serializable {
 
+    private Long id;
+    private Long threadid;
     private String content;
     private int likecount;
-    private Long threadid;
 }
