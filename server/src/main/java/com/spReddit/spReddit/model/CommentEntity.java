@@ -29,4 +29,12 @@ public class CommentEntity{
     }
 
     public CommentEntity() {}
+
+    public void increaseLikes() {
+        this.likecount = likecount + 1;
+    }
+
+    public void decreaseLikes() {
+        this.likecount = likecount - 1;
+    }
 }

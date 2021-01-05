@@ -7,6 +7,7 @@ import com.spReddit.spReddit.model.UserEntity;
 import com.spReddit.spReddit.repository.CommentsRepository;
 import com.spReddit.spReddit.repository.ThreadRepository;
 import com.spReddit.spReddit.repository.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,12 +45,38 @@ public class CommentsController {
     @GetMapping(value = "/threadcomments/{thread_id}")
     public List<CommentDto> getComments(@PathVariable Long thread_id){
 
-        List<CommentEntity> commentList = commentsRepository.findAllByThreadId(thread_id);
+        List<CommentEntity> commentList = commentsRepository.findAllByThreadId(thread_id,
+                Sort.by(Sort.Direction.DESC, "likecount"));
 
         List<CommentDto> commentDtoList = commentList.stream()
-                .map(comment -> new CommentDto(comment.getContent(), comment.getLikecount(), comment.getThread().getId()))
-                    .collect(Collectors.toList());
+                .map(comment -> new CommentDto(
+                        comment.getId(), comment.getThread().getId(), comment.getContent(), comment.getLikecount()))
+                            .collect(Collectors.toList());
 
         return commentDtoList;
+    }
+
+    @GetMapping(value = "/likecomment/{comment_id}")
+    ResponseEntity<String> likeComment(@PathVariable Long comment_id) throws Exception {
+
+        CommentEntity comment = commentsRepository.findById(comment_id)
+                .orElseThrow(() -> new Exception("Comment not found!"));
+
+        comment.increaseLikes();
+        commentsRepository.save(comment);
+
+        return ResponseEntity.ok("Liked comment");
+    }
+
+    @GetMapping(value = "/dislikecomment/{comment_id}")
+    ResponseEntity<String> dislikeComment(@PathVariable Long comment_id) throws Exception {
+
+        CommentEntity comment = commentsRepository.findById(comment_id)
+                .orElseThrow(() -> new Exception("Comment not found!"));
+
+        comment.decreaseLikes();
+        commentsRepository.save(comment);
+
+        return ResponseEntity.ok("Disliked comment");
     }
 }
