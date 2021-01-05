@@ -4,11 +4,12 @@
     border: 2px solid rgb(156, 156, 156);;
     border-radius: 15px;
     margin: 10px auto 10px 0px;
-    height: 100px;
+    height: 100%;
 }
 
 .comment {
     color: white;
+    padding: 10px;
 }
 
 .buttonsC {
