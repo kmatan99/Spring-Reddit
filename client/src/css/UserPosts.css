@@ -1,4 +1,23 @@
-.mainContainer {
+.maincontainerU {
+    display: flex;
+    flex-direction: column;
+}
+
+.maincontainerU2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.postsU {
+    color: white;
+}
+
+.commentsU {
+    color: white;
+}
+
+.maincontainerU3 {
     display: flex;
     flex-direction: row;
 }
@@ -6,13 +25,13 @@
 .threads {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 45%;
 }
 
 .homeButton {
     height: 30px;
     width: 10%;
-    margin: 60px auto auto 30px;
+    margin: 30px 0px auto 30px;
     border: none;
     border-radius: 15px;
     background-color:rgb(73, 121, 175);
@@ -20,7 +39,7 @@
 }
 
 .userThreads {
-    margin: 30px auto;
+    margin: 0px auto 20px 10px;
     padding: 10px;
     background-color: rgb(34, 34, 34);  
     box-shadow: 0px 5px 20px 0px;
@@ -28,7 +47,7 @@
     flex-direction: row;
     height: 150px;
     justify-content: space-between;
-    width: 90%;
+    border-radius: 15px;
 }
 
 .editButton {
@@ -49,4 +68,9 @@
     background-color: rgb(184, 20, 20);
     color: white;
     margin: 0px 5px 5px auto;
+}
+
+.commentsU2 {
+    margin: 30px 10px auto auto;
+    width: 45%;
 }

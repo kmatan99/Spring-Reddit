@@ -4,24 +4,34 @@ import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 import ThreadPreview from './ThreadPreview';
+import UserComments from './UserComments';
 import '../css/UserPosts.css';
 
 class UserPosts extends React.Component {
     state = {
-        threads: []
+        threads: [],
+        comments: []
     }
 
     render() {
         return(
-            <div className="mainContainer">
-                <div className="threads">{this.renderPosts()}</div>
-                <button className="homeButton" onClick={this.toHome}>Home</button>
+            <div className="maincontainerU">
+                <div className="maincontainerU2">
+                    <p className="postsU">Your posts:</p>
+                    <p className="commentsU">Your comments:</p>
+                </div>
+                <div className="maincontainerU3">
+                    <div className="threads">{this.renderPosts()}</div>
+                    <button className="homeButton" onClick={this.toHome}>Home</button>
+                    <div className="commentsU2">{this.renderComments()}</div>
+                </div>
             </div>
         )
     }
 
     componentDidMount = () => {
-        this.getPosts()
+        this.getPosts();
+        this.getComments();
     }
 
     getPosts = () => {
@@ -29,6 +39,15 @@ class UserPosts extends React.Component {
         .then(response => {
             this.setState({
                 threads: response.data.threadList
+            })
+        })
+    }
+
+    getComments = () => {
+        axios.get("http://localhost:9090/usercomments/3")
+        .then(response => {
+            this.setState({
+                comments: response.data
             })
         })
     }
@@ -48,6 +67,25 @@ class UserPosts extends React.Component {
                         editButton="editButton"
                         deleteButton="deleteButton"
                         getPosts={this.getPosts}
+                    />
+                )
+            })
+        )
+    }
+
+    renderComments = () => {
+        if(this.state.comments.length === 0) {
+            return null
+        }
+
+        return(
+            this.state.comments.map((comment, index) => {
+                return(
+                    <UserComments 
+                        key={index}
+                        comment={comment}
+                        getThreadId={this.props.getThreadId}
+                        getComments={this.getComments}
                     />
                 )
             })

@@ -1,0 +1,37 @@
+.mainUC {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 15px 30px;
+    border-radius: 15px;
+    background-color: rgb(34, 34, 34);
+    color: white;
+    padding: 10px;
+}
+
+.contentUC {
+    font-size: small
+}
+
+.auxUC {
+    display: flex;
+    flex-direction: row;
+}
+
+.commentedinUC {
+    color: rgb(95, 94, 94);
+    font-size: smaller;
+}
+
+.commentedinUC:hover {
+    color: white;
+}
+
+.deleteUC {
+    width: 6%;
+    height: 30%;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(184, 20, 20);
+    color: white;
+    margin: auto 10px auto auto;
+}
