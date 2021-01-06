@@ -79,4 +79,25 @@ public class CommentsController {
 
         return ResponseEntity.ok("Disliked comment");
     }
+
+    @DeleteMapping(value = "/deletecomment/{comment_id}")
+    ResponseEntity<String> deleteComment(@PathVariable Long comment_id) throws Exception {
+
+        commentsRepository.deleteById(comment_id);
+        
+        return ResponseEntity.ok("Deleted comment.");
+    }
+
+    @GetMapping(value = "/usercomments/{user_id}")
+    List<CommentDto> getUserComments(@PathVariable Long user_id) throws Exception {
+
+        List<CommentEntity> commentList = commentsRepository.findAllByUserId(user_id);
+
+        List<CommentDto> commentListDto =
+                commentList.stream().map(comment ->new CommentDto(
+                        comment.getId(), comment.getThread().getId(), comment.getContent(), comment.getLikecount()))
+                            .collect(Collectors.toList());
+
+        return commentListDto;
+    }
 }

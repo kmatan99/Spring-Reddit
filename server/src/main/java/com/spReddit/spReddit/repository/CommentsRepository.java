@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface CommentsRepository extends JpaRepository<CommentEntity, Long> {
     public Optional<CommentEntity> findById(Long id);
     public List<CommentEntity> findAllByThreadId(Long id, Sort var1);
+    public List<CommentEntity> findAllByUserId(Long id);
 }
