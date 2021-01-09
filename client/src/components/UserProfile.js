@@ -4,20 +4,16 @@ import {withRouter} from 'react-router-dom';
 import '../css/UserProfile.css';
 
 class UserProfile extends React.Component {
-
-    state = {
-        isLoggedIn: false
-    }
     
     render() {
         return(
             <div className="userOptions">
                 {
-                    this.state.isLoggedIn ? (
+                    this.props.isLoggedIn ? (
                         <div className="registeredUser">
                             <div className="username" onClick={this.toUserPosts}>username</div>
                             <div className="editUser">Edit profile</div>
-                            <button className="logOut">Log out</button>
+                            <button className="logOut" onClick={this.logOut}>Log out</button>
                         </div>
                     ) 
                     : ( 
@@ -47,6 +43,10 @@ class UserProfile extends React.Component {
 
     toRegister = () => {
         this.props.history.push("/register");
+    }
+
+    logOut = () => {
+        localStorage.removeItem("jwtToken");
     }
 }
 
