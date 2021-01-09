@@ -28,16 +28,21 @@ class FullThread extends React.Component {
                         <hr></hr>
                         <div className="fullThreadContent">{this.state.thread.content}</div>
                         <div className="commentsData">Comments ({this.state.comments.length})</div>
-                        <div className="commentareaF">
-                            <textarea className="addcommentF" placeholder="Write something" onChange={this.getComment}></textarea>
-                            <button className="postcommentF" onClick={this.addComment}>Comment</button>
-                        </div>
+                        {this.props.isLoggedIn ? (
+                            <div className="commentareaF">
+                                <textarea className="addcommentF" placeholder="Write something" onChange={this.getComment}></textarea>
+                                <button className="postcommentF" onClick={this.addComment}>Comment</button>
+                            </div>
+                        ) : (
+                            <p className="userNotLogged">Only registered users can post comments. Please log in to contribute to this thread.</p>
+                        )
+                        }
                         <div className="comments">{this.renderComments()}</div>
                     </div>
                     <div className="imageF">
                         {this.state.thread.imageUrl ? (
                                 <img src={this.state.thread.imageUrl} 
-                                    alt="">
+                                    alt="" className="imageLinkF">
                                 </img>
                             ) :     
                             (
