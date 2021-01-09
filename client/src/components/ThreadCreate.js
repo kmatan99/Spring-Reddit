@@ -48,13 +48,17 @@ class ThreadCreate extends React.Component {
             imageUrl: this.state.imageUrl
         }
 
-        axios.post("http://localhost:9090/createthread/3", threadData)
+        const jwtToken = localStorage.getItem('jwtToken');
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken;
+
+        axios.post("http://localhost:9090/createthread", threadData)
         .then(() => {
             console.log("Created thread!");
             this.props.getThreads();
         })
 
         this.props.history.push("/");
+        window.location.reload(false);
     }
 }
 

@@ -35,7 +35,10 @@ class UserPosts extends React.Component {
     }
 
     getPosts = () => {
-        axios.get("http://localhost:9090/userthreads/3")
+        const jwtToken = localStorage.getItem('jwtToken')
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken;
+
+        axios.get("http://localhost:9090/userthreads")
         .then(response => {
             this.setState({
                 threads: response.data.threadList
@@ -44,7 +47,10 @@ class UserPosts extends React.Component {
     }
 
     getComments = () => {
-        axios.get("http://localhost:9090/usercomments/3")
+        const jwtToken = localStorage.getItem('jwtToken')
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken;
+
+        axios.get("http://localhost:9090/usercomments")
         .then(response => {
             this.setState({
                 comments: response.data
@@ -67,6 +73,7 @@ class UserPosts extends React.Component {
                         editButton="editButton"
                         deleteButton="deleteButton"
                         getPosts={this.getPosts}
+                        getThreadId={this.props.getThreadId}
                     />
                 )
             })
