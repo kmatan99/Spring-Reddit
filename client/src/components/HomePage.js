@@ -21,7 +21,7 @@ class HomePage extends React.Component {
     state = {
         allThreads: [],
         threadId: null,
-        isLoggedin: true
+        isLoggedIn: false
     }
 
     render() {
@@ -57,13 +57,15 @@ class HomePage extends React.Component {
 
                     <Route path="/">
                         <div className="homepage">
-                            <UserProfile />
+                            <UserProfile 
+                                isLoggedIn={this.state.isLoggedIn}
+                            />
                             <ThreadPage 
                                 allThreads={this.state.allThreads}
                                 getThreads={this.getThreads}
                                 getThreadId={this.getThreadId}
                             />
-                            {this.state.isLoggedin ? (<NewThreadButton />) : (null)}
+                            {this.state.isLoggedIn ? (<NewThreadButton />) : (null)}
                         </div> 
                     </Route>
                 </Switch>
@@ -73,6 +75,7 @@ class HomePage extends React.Component {
 
     componentDidMount = () => {
         this.getThreads();
+        this.checkUserStatus();
     }
 
     getThreads = () => {
@@ -88,6 +91,14 @@ class HomePage extends React.Component {
         this.setState({
             threadId: id
         })
+    }
+
+    checkUserStatus = () => {
+        if(localStorage.getItem("jwtToken")) {
+            this.setState({
+                isLoggedIn: true
+            })
+        }
     }
 }
 
