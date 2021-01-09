@@ -30,12 +30,12 @@ class ThreadPreview extends React.Component {
                 <div className="image">
                     {this.props.thread.imageUrl ? (
                             <img src={this.props.thread.imageUrl} 
-                                alt="">
+                                alt="404" className="imageLink">
                             </img>
                         ) :         
                         (
                             <img className="imageLink" src="https://www.ecpgr.cgiar.org/fileadmin/templates/ecpgr.org/Assets/images/No_Image_Available.jpg" 
-                                alt="" >
+                                alt="404" >
                             </img>
                         )
                     }

@@ -15,7 +15,8 @@ class Register extends React.Component {
     render(){
         return(
             <div className="mainR">
-                <img className="headerR" src="https://sp-images.summitpost.org/963237.jpg?auto=format&fit=max&h=1000&ixlib=php-2.1.1&q=35&s=bf5d49d02fd4f55f33c34f8c5f24dd66"></img>
+                <img className="headerR" src="https://sp-images.summitpost.org/963237.jpg?auto=format&fit=max&h=1000&ixlib=php-2.1.1&q=35&s=bf5d49d02fd4f55f33c34f8c5f24dd66"
+                    alt="404"></img>
                 <p className="descR">Spring Reddit is officially here, sign up and enjoy!</p>
                 <input className="usernameR" type="text" placeholder="Username" onChange={this.handleUsernameInput}></input>
                 <input className="passwordR" type="password" placeholder="Password" onChange={this.handlePasswordInput}></input>

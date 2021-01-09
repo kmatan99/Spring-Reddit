@@ -52,6 +52,7 @@ class HomePage extends React.Component {
                     <Route path="/thread">
                         <FullThread 
                             threadId={this.state.threadId}
+                            isLoggedIn={this.state.isLoggedIn}
                         />
                     </Route>
 

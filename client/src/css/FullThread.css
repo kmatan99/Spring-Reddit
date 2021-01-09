@@ -103,6 +103,10 @@ p {
     background-color: rgb(94, 168, 91);;
 }
 
+.userNotLogged {
+    color: rgb(126, 126, 126);
+}
+
 .imageF {
     display: flex;
     flex-direction: column;

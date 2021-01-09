@@ -15,7 +15,8 @@ class Login extends React.Component {
     render(){
         return(
             <div className="mainL">
-                <img className="headerL" src="https://sp-images.summitpost.org/963237.jpg?auto=format&fit=max&h=1000&ixlib=php-2.1.1&q=35&s=bf5d49d02fd4f55f33c34f8c5f24dd66"></img>
+                <img className="headerL" src="https://sp-images.summitpost.org/963237.jpg?auto=format&fit=max&h=1000&ixlib=php-2.1.1&q=35&s=bf5d49d02fd4f55f33c34f8c5f24dd66"
+                    alt="404"></img>
                 <input className="usernameL" type="text" placeholder="Username" onChange={this.handleUsernameInput}></input>
                 <input className="passwordL" type="password" placeholder="Password" onChange={this.handlePasswordInput}></input>
                 <button className="loginL" onClick={this.handleLogin}>Login</button>
@@ -46,6 +47,7 @@ class Login extends React.Component {
         .then((response) => {
             localStorage.setItem("jwtToken", response.data.jwtToken);
             this.props.history.push("/");
+            window.location.reload(false);
         })
         .catch(err => console.log(err));
     }
