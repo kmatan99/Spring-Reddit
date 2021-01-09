@@ -47,6 +47,7 @@ class UserProfile extends React.Component {
 
     logOut = () => {
         localStorage.removeItem("jwtToken");
+        window.location.reload(false);
     }
 }
 
