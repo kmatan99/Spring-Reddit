@@ -6,7 +6,7 @@ import '../css/UserProfile.css';
 class UserProfile extends React.Component {
 
     state = {
-        isLoggedIn: true
+        isLoggedIn: false
     }
     
     render() {
@@ -22,8 +22,8 @@ class UserProfile extends React.Component {
                     ) 
                     : ( 
                         <div className="guestUser">
-                            <button className="login">Log In</button>
-                            <button className="register">Sign Up!</button>
+                            <button className="login" onClick={this.toLogin}>Log In</button>
+                            <button className="register" onClick={this.toRegister}>Sign Up!</button>
                             <p className="generalDescription">
                                 Welcome to Spring Reddit: The front page of the internet!                      
                             </p>
@@ -39,6 +39,14 @@ class UserProfile extends React.Component {
 
     toUserPosts = () => {
         this.props.history.push("/userPosts");
+    }
+
+    toLogin = () => {
+        this.props.history.push("/login");
+    }
+
+    toRegister = () => {
+        this.props.history.push("/register");
     }
 }
 

@@ -1,0 +1,70 @@
+.mainR {
+    height: 70vh;
+    width: 45%;
+    margin: 30px auto;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
+}
+
+.headerR {
+    height: 25%;
+    background-color: rgb(27, 27, 27);
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    margin: 0px 0px 10px 0px;
+}
+
+.usernameR {
+    height: 7%;
+    width: 70%;
+    margin: 10px auto;
+    border: none;
+    padding: 5px;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    color: white;
+}
+
+.passwordR {
+    height: 7%;
+    width: 70%;
+    margin: 10px auto;
+    border: none;
+    padding: 5px;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    color: white;
+}
+
+.emailR {
+    height: 7%;
+    width: 70%;
+    margin: 10px auto;
+    border: none;
+    padding: 5px;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    color: white;
+}
+
+.registerR {
+    width: 20%;
+    height: 7%;
+    background-color: rgb(94, 168, 91);
+    border: none;
+    border-radius: 15px;
+    margin: 10px auto 0px 6rem;
+}
+
+.registerR:hover {
+    opacity: 0.8;
+}
+
+.descR {
+    color: white;
+    font-size: larger;
+    margin: 15px auto 30px auto;
+    font-style: Verdana, Geneva, Tahoma, sans-serif;
+}

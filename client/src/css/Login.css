@@ -1,0 +1,73 @@
+.mainL {
+    height: 70vh;
+    width: 45%;
+    margin: 30px auto;
+    background-color: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: column;
+}
+
+.headerL {
+    height: 25%;
+    background-color: rgb(27, 27, 27);
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    margin: 0px 0px 10px 0px;
+}
+
+.usernameL {
+    height: 7%;
+    width: 70%;
+    margin: 10px auto;
+    border: none;
+    padding: 5px;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    color: white;
+}
+
+.passwordL {
+    height: 7%;
+    width: 70%;
+    margin: 10px auto;
+    border: none;
+    padding: 5px;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    color: white;
+}
+
+.emailL {
+    height: 7%;
+    width: 70%;
+    margin: 10px auto;
+    border: none;
+    padding: 5px;
+    background-color: rgb(34, 34, 34);
+    border-bottom: 3px solid rgb(70, 70, 70);
+    color: white;
+}
+
+.loginL {
+    width: 20%;
+    height: 7%;
+    background-color: rgb(94, 168, 91);
+    border: none;
+    border-radius: 15px;
+    margin: 10px auto 0px 6rem;
+}
+
+.loginL:hover {
+    opacity: 0.8;
+}
+
+.noaccL {
+    color: white;
+    margin: 20px auto 0px 6rem;
+}
+
+.noaccL:hover {
+    color: rgb(73, 121, 175);
+    
+}

@@ -6,25 +6,36 @@ import {
     Route
 } from 'react-router-dom';
 
+import '../css/HomePage.css';
 
 import ThreadPage from './ThreadPage';
 import UserProfile from './UserProfile';
 import NewThreadButton from './NewThreadButton';
 import ThreadCreate from './ThreadCreate';
 import UserPosts from './UserPosts';
-import '../css/HomePage.css';
 import FullThread from './FullThread';
+import Register from './Register';
+import Login from './Login';
 
 class HomePage extends React.Component {
     state = {
         allThreads: [],
-        threadId: null 
+        threadId: null,
+        isLoggedin: true
     }
 
     render() {
         return(
             <Router>
                 <Switch>
+                    <Route path="/register">
+                        <Register />
+                    </Route>
+
+                    <Route path="/login">
+                        <Login />
+                    </Route>
+
                     <Route path="/createThread">
                         <ThreadCreate 
                             getThreads={this.getThreads}
@@ -52,7 +63,7 @@ class HomePage extends React.Component {
                                 getThreads={this.getThreads}
                                 getThreadId={this.getThreadId}
                             />
-                            <NewThreadButton />
+                            {this.state.isLoggedin ? (<NewThreadButton />) : (null)}
                         </div> 
                     </Route>
                 </Switch>
