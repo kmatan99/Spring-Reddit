@@ -7,9 +7,8 @@
 }
 
 .logo {
-    height: 90px;
-    margin-top: 5px;
-    width: 100px;
+    margin: auto 5px auto 5px;
+    height: 90%;
 }
 
 .appName {
