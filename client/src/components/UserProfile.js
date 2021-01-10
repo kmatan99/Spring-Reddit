@@ -1,17 +1,23 @@
 import React from 'react';
+import axios from 'axios';
+
 import {withRouter} from 'react-router-dom';
 
 import '../css/UserProfile.css';
 
 class UserProfile extends React.Component {
     
+    state = {
+        username: ""
+    }
+
     render() {
         return(
             <div className="userOptions">
                 {
                     this.props.isLoggedIn ? (
                         <div className="registeredUser">
-                            <div className="username" onClick={this.toUserPosts}>username</div>
+                            <div className="username" onClick={this.toUserPosts}>{this.state.username}</div>
                             <div className="editUser">Edit profile</div>
                             <button className="logOut" onClick={this.logOut}>Log out</button>
                         </div>
@@ -31,6 +37,21 @@ class UserProfile extends React.Component {
                 }
             </div>
         )
+    }
+
+    componentDidMount = () => {
+        const jwtToken = localStorage.getItem('jwtToken');
+
+        if(jwtToken) {
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken;
+
+            axios.get("http://localhost:9090/currentusername")
+            .then(response => {
+                this.setState({
+                    username: response.data
+                })
+            })
+        }
     }
 
     toUserPosts = () => {
