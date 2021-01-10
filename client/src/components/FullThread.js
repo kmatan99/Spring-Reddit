@@ -162,6 +162,9 @@ class FullThread extends React.Component {
             return null
         }
 
+        const jwtToken = localStorage.getItem("jwtToken");
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + jwtToken;
+
         axios.post("http://localhost:9090/comment/" + this.props.threadId, data)
         .then(() => {
             this.getThreadComments();
