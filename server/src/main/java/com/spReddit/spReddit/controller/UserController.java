@@ -8,6 +8,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+
 @RestController
 public class UserController {
     private UserRepository userRepository;
@@ -40,5 +43,15 @@ public class UserController {
         userRepository.deleteById(id);
 
         return ResponseEntity.ok("Deleted user successfully!");
+    }
+
+    @GetMapping(value = "/currentusername")
+    public String getCurrentUserName(HttpServletRequest request) throws Exception {
+
+        Principal principal = request.getUserPrincipal();
+        UserEntity user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new Exception("User not found!"));
+
+        return user.getUsername();
     }
 }
