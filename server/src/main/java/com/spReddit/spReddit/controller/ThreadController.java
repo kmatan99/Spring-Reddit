@@ -5,13 +5,17 @@ import com.spReddit.spReddit.dto.ThreadDto;
 import com.spReddit.spReddit.dto.ThreadListDto;
 import com.spReddit.spReddit.model.ThreadEntity;
 import com.spReddit.spReddit.model.UserEntity;
+import com.spReddit.spReddit.repository.CommentsRepository;
 import com.spReddit.spReddit.repository.ThreadRepository;
 import com.spReddit.spReddit.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,10 +24,12 @@ public class ThreadController {
 
     private UserRepository userRepository;
     private ThreadRepository threadRepository;
+    private CommentsRepository commentsRepository;
 
-    public ThreadController(UserRepository userRepository, ThreadRepository threadRepository) {
+    public ThreadController(UserRepository userRepository, ThreadRepository threadRepository, CommentsRepository commentsRepository) {
         this.userRepository = userRepository;
         this.threadRepository = threadRepository;
+        this.commentsRepository = commentsRepository;
     }
 
     @GetMapping(value = "/getthreads")
@@ -48,10 +54,11 @@ public class ThreadController {
          return thread;
     }
 
-    @PostMapping(value = "/createthread/{id}")
-    ResponseEntity<String> createThread(@RequestBody PostThreadDto threadDto, @PathVariable Long id) throws Exception {
+    @PostMapping(value = "/createthread")
+    ResponseEntity<String> createThread(@RequestBody PostThreadDto threadDto, HttpServletRequest request) throws Exception {
 
-        UserEntity user = userRepository.findById(id)
+        Principal principal = request.getUserPrincipal();
+        UserEntity user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new Exception("User not found!"));
 
         ThreadEntity newThread = new ThreadEntity(threadDto.getTitle(), threadDto.getContent(), threadDto.getImageUrl(), user);
@@ -63,8 +70,13 @@ public class ThreadController {
 
     @DeleteMapping(value = "/deletethread/{id}")
     ResponseEntity<String> deleteThread(@PathVariable Long id) throws Exception {
-        threadRepository.delete((threadRepository.findById(id)
-                .orElseThrow(() -> new Exception("Thread not found!"))));
+
+        ThreadEntity thread = threadRepository.findById(id)
+                .orElseThrow(() -> new Exception("Thread not found!"));
+
+        if(thread.getCommentList() != null) {
+            thread.getCommentList().forEach((commentEntity -> commentsRepository.delete(commentEntity)));
+        } threadRepository.delete(thread);
 
         return ResponseEntity.ok("Thread deleted!");
     }
@@ -105,10 +117,12 @@ public class ThreadController {
         return ResponseEntity.ok("Disliked thread");
     }
 
-    @GetMapping(value = "/userthreads/{userid}")
-    public ThreadListDto getUserThreads(@PathVariable Long userid) throws Exception {
+    @GetMapping(value = "/userthreads")
+    public ThreadListDto getUserThreads(HttpServletRequest request) throws Exception {
 
-        UserEntity user = userRepository.findById(userid)
+        Principal principal = request.getUserPrincipal();
+
+        UserEntity user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new Exception("User not found!"));
 
         List<ThreadEntity> threads = user.getPostList();

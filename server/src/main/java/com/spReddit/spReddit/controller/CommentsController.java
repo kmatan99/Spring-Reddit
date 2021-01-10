@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,9 +30,11 @@ public class CommentsController {
     }
 
     @PostMapping(value = "/comment/{thread_id}")
-    ResponseEntity<String> addComment(@PathVariable Long thread_id, @RequestBody CommentDto commentDto) throws Exception {
+    ResponseEntity<String> addComment(@PathVariable Long thread_id, @RequestBody CommentDto commentDto,
+                                      HttpServletRequest request) throws Exception {
 
-        UserEntity user = userRepository.findById(Long.valueOf(3)) //will be solver later using Principle interface
+        Principal principal = request.getUserPrincipal();
+        UserEntity user = userRepository.findByUsername(principal.getName())
                 .orElseThrow(() -> new Exception("User not found!"));
 
         ThreadEntity thread = threadRepository.findById(thread_id)
@@ -88,10 +92,14 @@ public class CommentsController {
         return ResponseEntity.ok("Deleted comment.");
     }
 
-    @GetMapping(value = "/usercomments/{user_id}")
-    List<CommentDto> getUserComments(@PathVariable Long user_id) throws Exception {
+    @GetMapping(value = "/usercomments")
+    List<CommentDto> getUserComments(HttpServletRequest request) throws Exception {
 
-        List<CommentEntity> commentList = commentsRepository.findAllByUserId(user_id);
+        Principal principal = request.getUserPrincipal();
+        UserEntity user = userRepository.findByUsername(principal.getName())
+                .orElseThrow(() -> new Exception("User not found!"));
+
+        List<CommentEntity> commentList = commentsRepository.findAllByUserId(user.getId());
 
         List<CommentDto> commentListDto =
                 commentList.stream().map(comment ->new CommentDto(
