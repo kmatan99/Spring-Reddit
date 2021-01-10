@@ -71,7 +71,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // dont authenticate this particular request
                 .authorizeRequests().antMatchers("/authenticate", "/createuser", "/getthreads"
                     , "/getthread/{id}", "/threadcomments/{thread_id}", "/getuser/{id}"
-                        , "/likethread/{id}", "/dislikethread/{id}").permitAll().
+                        , "/likethread/{id}", "/dislikethread/{id}", "/likecomment/{comment_id}"
+                            , "/dislikecomment/{comment_id}").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to
