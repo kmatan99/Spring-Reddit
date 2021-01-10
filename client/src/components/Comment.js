@@ -6,7 +6,8 @@ import '../css/Comment.css';
 class Comment extends React.Component {
     state = {
         clickedLike: false,
-        clickedDislike: false
+        clickedDislike: false,
+        user: ""
     }
 
     render() {
@@ -17,9 +18,21 @@ class Comment extends React.Component {
                     <button className="downvoteC" onClick={this.dislikeComment}>⇩</button>
                     <p className="likecountC">{this.props.comment.likecount}</p>
                 </div>
-                <div className="comment">{this.props.comment.content}</div>
+                <div className="comment">
+                    <p className="commentC">{this.props.comment.content}</p>
+                    <p className="commentByC">{this.state.user}</p>    
+                </div>
             </div>
         )
+    }
+
+    componentDidMount = () => {
+        axios.get("http://localhost:9090/getuser/" + this.props.comment.userid)
+        .then(response => {
+            this.setState({
+                user: response.data.username    
+            })
+        })
     }
 
     likeComment = () => {

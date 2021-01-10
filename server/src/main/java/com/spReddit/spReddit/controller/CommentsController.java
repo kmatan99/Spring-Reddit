@@ -54,7 +54,7 @@ public class CommentsController {
 
         List<CommentDto> commentDtoList = commentList.stream()
                 .map(comment -> new CommentDto(
-                        comment.getId(), comment.getThread().getId(), comment.getContent(), comment.getLikecount()))
+                        comment.getId(), comment.getThread().getId(), comment.getUser().getId(), comment.getContent(), comment.getLikecount()))
                             .collect(Collectors.toList());
 
         return commentDtoList;
@@ -103,7 +103,7 @@ public class CommentsController {
 
         List<CommentDto> commentListDto =
                 commentList.stream().map(comment ->new CommentDto(
-                        comment.getId(), comment.getThread().getId(), comment.getContent(), comment.getLikecount()))
+                        comment.getId(), comment.getThread().getId(), comment.getUser().getId(), comment.getContent(), comment.getLikecount()))
                             .collect(Collectors.toList());
 
         return commentListDto;

@@ -11,6 +11,7 @@ public class CommentDto implements Serializable {
 
     private Long id;
     private Long threadid;
+    private Long userid;
     private String content;
     private int likecount;
 }
