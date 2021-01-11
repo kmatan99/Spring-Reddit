@@ -64,7 +64,6 @@ class ThreadPreview extends React.Component {
     }
 
     likeThread = () => {
-
         if(!this.state.clickedLike) {
             axios.get("http://localhost:9090/likethread/" + this.props.thread.id)
             .then(() => {
@@ -86,7 +85,6 @@ class ThreadPreview extends React.Component {
     }
 
     dislikeThread = () => {
-
         if(!this.state.clickedDislike) {
             axios.get("http://localhost:9090/dislikethread/" + this.props.thread.id)
             .then(() => {
@@ -111,6 +109,7 @@ class ThreadPreview extends React.Component {
         axios.delete("http://localhost:9090/deletethread/" + this.props.thread.id)
         .then(() => {
             this.props.getPosts();
+            this.props.getComments();
         })
     }
 

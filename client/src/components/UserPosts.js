@@ -73,6 +73,7 @@ class UserPosts extends React.Component {
                         editButton="editButton"
                         deleteButton="deleteButton"
                         getPosts={this.getPosts}
+                        getComments={this.getComments}
                         getThreadId={this.props.getThreadId}
                     />
                 )
