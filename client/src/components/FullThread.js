@@ -100,7 +100,6 @@ class FullThread extends React.Component {
     }
 
     likeThread = () => {
-
         if(!this.state.clickedLike) {
             axios.get("http://localhost:9090/likethread/" + this.props.threadId)
             .then(() => {
@@ -153,7 +152,6 @@ class FullThread extends React.Component {
     }
 
     addComment = () => {
-
         const data = {
             content: this.state.commentContent
         }

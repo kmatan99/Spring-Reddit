@@ -6,7 +6,6 @@ import {withRouter} from 'react-router-dom';
 import '../css/UserProfile.css';
 
 class UserProfile extends React.Component {
-    
     state = {
         username: ""
     }
@@ -71,6 +70,5 @@ class UserProfile extends React.Component {
         window.location.reload(false);
     }
 }
-
 
 export default withRouter(UserProfile);

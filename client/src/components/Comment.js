@@ -36,7 +36,6 @@ class Comment extends React.Component {
     }
 
     likeComment = () => {
-
         if(!this.state.clickedLike) {
             axios.get("http://localhost:9090/likecomment/" + this.props.comment.id)
             .then(() => {
@@ -58,7 +57,6 @@ class Comment extends React.Component {
     }
 
     dislikeComment = () => {
-
         if(!this.state.clickedDislike) {
             axios.get("http://localhost:9090/dislikecomment/" + this.props.comment.id)
             .then(() => {
